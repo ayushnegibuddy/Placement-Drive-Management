@@ -4,13 +4,14 @@ Project Theme:
 Placement Drive Registration and Interview Management System
 
 Members:
-Ayush Negi – 590015410
-Ayush Kumar – 590014539
-Mayank Tanishk – 590015863
-Mayank Parmar – 590017039
-Sakshi Singh – 590012402
-Samiksha Rajan – 590016234
-Satyam Pandey – 590016569
+Ayush Negi – 590015410, 
+Ayush Kumar – 590014539, 
+Mayank Tanishk – 590015863, 
+Mayank Parmar – 590017039, 
+Sakshi Singh – 590012402, 
+Samiksha Rajan – 590016234, 
+Satyam Pandey – 590016569, 
+
 Problem Statement:
 
 Managing placement drives manually creates issues such as duplicate registrations, poor student record management, interview scheduling conflicts, and difficulty tracking shortlisted candidates.

@@ -38,8 +38,15 @@ public class CompanyPanel extends JPanel {
             JOptionPane.showMessageDialog(this, "All fields are required!", "Validation Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        // Mocking Service to DAO logic. No raw SQL here.
-        JOptionPane.showMessageDialog(this, "Company added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-        txtName.setText(""); txtLocation.setText("");
+        
+        service.CompanyService companyService = new service.CompanyService();
+        boolean success = companyService.registerCompany(txtName.getText().trim(), txtLocation.getText().trim());
+        
+        if (success) {
+            JOptionPane.showMessageDialog(this, "Company added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            txtName.setText(""); txtLocation.setText("");
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to add company. Please check your database connection.", "Database Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }

@@ -38,7 +38,15 @@ public class StudentApplicationPanel extends JPanel {
             JOptionPane.showMessageDialog(this, "Valid IDs are required!", "Validation Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        JOptionPane.showMessageDialog(this, "Application Submitted with Status 'Applied'!", "Success", JOptionPane.INFORMATION_MESSAGE);
-        txtStudentId.setText(""); txtDriveId.setText("");
+        
+        service.ApplicationService appService = new service.ApplicationService();
+        boolean success = appService.applyForDrive(txtStudentId.getText().trim(), txtDriveId.getText().trim());
+        
+        if (success) {
+            JOptionPane.showMessageDialog(this, "Application Submitted with Status 'Applied'!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            txtStudentId.setText(""); txtDriveId.setText("");
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to submit application. Check if Student and Drive IDs are valid.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }

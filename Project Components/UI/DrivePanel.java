@@ -38,7 +38,15 @@ public class DrivePanel extends JPanel {
             JOptionPane.showMessageDialog(this, "Company ID and Date are required!", "Validation Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        JOptionPane.showMessageDialog(this, "Drive scheduled successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-        txtCompanyId.setText(""); txtDate.setText("");
+        
+        service.DriveService driveService = new service.DriveService();
+        boolean success = driveService.createDrive(txtCompanyId.getText().trim(), txtDate.getText().trim());
+        
+        if (success) {
+            JOptionPane.showMessageDialog(this, "Drive scheduled successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            txtCompanyId.setText(""); txtDate.setText("");
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to schedule drive. Check if Company ID is valid.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }

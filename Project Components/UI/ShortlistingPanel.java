@@ -39,7 +39,16 @@ public class ShortlistingPanel extends JPanel {
             JOptionPane.showMessageDialog(this, "Application ID is required!", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        JOptionPane.showMessageDialog(this, "Status updated successfully to: " + comboStatus.getSelectedItem(), "Success", JOptionPane.INFORMATION_MESSAGE);
-        txtAppId.setText("");
+        
+        service.ApplicationService appService = new service.ApplicationService();
+        String selectedStatus = (String) comboStatus.getSelectedItem();
+        boolean success = appService.updateApplicationStatus(txtAppId.getText().trim(), selectedStatus);
+        
+        if (success) {
+            JOptionPane.showMessageDialog(this, "Status updated successfully to: " + selectedStatus, "Success", JOptionPane.INFORMATION_MESSAGE);
+            txtAppId.setText("");
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to update status. Please check Application ID.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }

@@ -38,7 +38,15 @@ public class InterviewSchedulePanel extends JPanel {
             JOptionPane.showMessageDialog(this, "Application ID and Time are required!", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        JOptionPane.showMessageDialog(this, "Interview Scheduled successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-        txtAppId.setText(""); txtTime.setText("");
+        
+        service.InterviewService interviewService = new service.InterviewService();
+        boolean success = interviewService.scheduleInterview(txtAppId.getText().trim(), txtTime.getText().trim());
+        
+        if (success) {
+            JOptionPane.showMessageDialog(this, "Interview Scheduled successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            txtAppId.setText(""); txtTime.setText("");
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to schedule interview. Check if Application ID is valid.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }
